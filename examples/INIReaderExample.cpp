@@ -20,10 +20,10 @@ int main()
               << reader.Get("user", "email", "UNKNOWN") << ", pi="
               << reader.GetReal("user", "pi", -1) << ", active="
               << reader.GetBoolean("user", "active", true) << "\n";
-    std::cout << "Has values: user.name=" << reader.HasValue("user", "name")
+    /*std::cout << "Has values: user.name=" << reader.HasValue("user", "name")
               << ", user.nose=" << reader.HasValue("user", "nose") << "\n";
     std::cout << "Has sections: user=" << reader.HasSection("user")
-              << ", fizz=" << reader.HasSection("fizz") << "\n";
+              << ", fizz=" << reader.HasSection("fizz") << "\n";*/
     
     std::cout << "Sections:\n";
     std::vector<std::string> sections = reader.Sections();
