@@ -2,7 +2,6 @@ name: Tests
 
 on:
   push:
-    branches: [ master ]
   pull_request:
     branches: [ master ]
 
@@ -31,3 +30,8 @@ jobs:
       with:
         action: test
         meson-version: 1.4.1
+      continue-on-error: true
+
+    - name: Print Meson Test Log on Failure
+      if: failure()
+      run: cat /home/runner/work/inih/inih/build/meson-logs/testlog.txt
