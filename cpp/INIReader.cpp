@@ -128,7 +128,7 @@ std::vector<std::string> INIReader::Keys(const std::string& section) const {
     std::vector<std::string> keys;
     std::string keyPrefix = MakeKey(section, "");
     for (std::map<std::string, std::string>::const_iterator it = _values.begin(); it != _values.end(); ++it) {
-        if (it->first.compare(0, keyPrefix.length(), keyPrefix) == 0) {
+        if (it->first.compare(0, keyPrefix.length(), keyPrefix) == 0 && it->first.size() > keyPrefix.length()) {
             keys.push_back(it->first.substr(keyPrefix.length()));
         }
     }
