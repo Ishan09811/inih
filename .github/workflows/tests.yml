@@ -12,16 +12,12 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Install GDB
-      run: sudo apt-get update && sudo apt-get install -y gdb
-
-    - name: Run Tests with GDB on Failure
+    - name: Run Diff Tests
       run: |
-        set -e  # Stop on first failure
         cd tests
-        ./unittest.sh || (echo "Test failed, running GDB..." && gdb -batch -ex "run" -ex "bt" --args ./unittest.sh)
+        ./unittest.sh
         cd ../examples
-        ./cpptest.sh || (echo "Test failed, running GDB..." && gdb -batch -ex "run" -ex "bt" --args ./cpptest.sh)
+        ./cpptest.sh
         git diff --exit-code
 
   build-meson:
@@ -34,8 +30,3 @@ jobs:
       with:
         action: test
         meson-version: 1.4.1
-      continue-on-error: false
-
-    - name: Print Meson Test Log on Failure
-      if: failure()
-      run: cat /home/runner/work/inih/inih/build/meson-logs/testlog.txt
