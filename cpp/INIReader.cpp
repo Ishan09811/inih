@@ -12,6 +12,7 @@
 #include <algorithm>
 #include <cctype>
 #include <cstdlib>
+#include <ostream>
 #include "../ini.h"
 #include "INIReader.h"
 
