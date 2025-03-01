@@ -116,6 +116,7 @@ void INIReader::SetValue(const std::string& section, const std::string& name, co
 std::vector<std::string> INIReader::Sections() const {
     std::set<std::string> sectionSet;
     for (std::map<std::string, std::string>::const_iterator it = _values.begin(); it != _values.end(); ++it) {
+        std::cerr << "DEBUG: Key=" << it->first << ", Value=" << it->second << std::endl;
         size_t pos = it->first.find('=');
         if (pos != std::string::npos) {
             sectionSet.insert(it->first.substr(0, pos));
