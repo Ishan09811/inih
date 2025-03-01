@@ -12,12 +12,16 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Run Diff Tests
+    - name: Install GDB
+      run: sudo apt-get update && sudo apt-get install -y gdb
+
+    - name: Run Tests with GDB on Failure
       run: |
+        set -e  # Stop on first failure
         cd tests
-        ./unittest.sh
+        ./unittest.sh || (echo "Test failed, running GDB..." && gdb -batch -ex "run" -ex "bt" --args ./unittest.sh)
         cd ../examples
-        ./cpptest.sh
+        ./cpptest.sh || (echo "Test failed, running GDB..." && gdb -batch -ex "run" -ex "bt" --args ./cpptest.sh)
         git diff --exit-code
 
   build-meson:
