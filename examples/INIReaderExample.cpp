@@ -36,8 +36,8 @@ int main()
         std::cout << "Keys in section [" << *it << "]:\n";
         std::vector<std::string> keys = reader.Keys(*it);
         std::cout << "DEBUG: Keys vector size: " << keys.size() << "\n";
-        for (std::vector<std::string>::const_iterator kit = keys.begin(); kit != keys.end(); ++kit) {
-            std::cout << "- " << *kit << "\n";
+        for (size_t i = 0; i < keys.size(); i++) {
+            std::cout << "- " << keys[i] << "\n";
         }
     }
     
