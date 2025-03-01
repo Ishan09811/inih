@@ -27,7 +27,6 @@ int main()
     
     std::cout << "Sections:\n";
     std::vector<std::string> sections = reader.Sections();
-    std::cout << "DEBUG: Sections vector size: " << sections.size() << "\n";
     for (size_t i = 0; i < sections.size(); i++) {
         std::cout << "- " << sections[i] << "\n";
     }
@@ -35,7 +34,6 @@ int main()
     for (std::vector<std::string>::const_iterator it = sections.begin(); it != sections.end(); ++it) {
         std::cout << "Keys in section [" << *it << "]:\n";
         std::vector<std::string> keys = reader.Keys(*it);
-        std::cout << "DEBUG: Keys vector size: " << keys.size() << "\n";
         for (size_t i = 0; i < keys.size(); i++) {
             std::cout << "- " << keys[i] << "\n";
         }
