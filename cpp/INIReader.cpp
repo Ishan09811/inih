@@ -13,6 +13,7 @@
 #include <cctype>
 #include <cstdlib>
 #include <ostream>
+#include <iostream>
 #include "../ini.h"
 #include "INIReader.h"
 
